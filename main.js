@@ -3,7 +3,7 @@ const CHARS=[
 ];
 const $=s=>document.querySelector(s),canvas=$("#game"),ctx=canvas.getContext("2d"),spinBtn=$("#spin"),statusEl=$("#status"),soundBtn=$("#sound"),exitBtn=$("#exit"),reveal=$("#reveal"),collection=$("#collection"),count=$("#count");
 const KEY="glitch-park-wheel:v1",embedded=self!==top,THEME="./assets/audio/glitch-park-theme.mp3";let data={spins:0,owned:[]};try{data={...data,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch{}let sound=true,audioContext,themeAudio,angle=0,spinning=false,start=0,duration=0,from=0,to=0,w=0,h=0,dpr=1;
-if(embedded){document.documentElement.classList.add("embedded");const style=document.createElement("style");style.textContent=".embedded .brand{padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none}.embedded .brand h1{display:none}";document.head.append(style)}
+if(embedded){const brand=exitBtn.closest(".brand"),topLeft=document.createElement("div"),style=document.createElement("style");topLeft.className="topLeft";brand.before(topLeft);topLeft.append(exitBtn,brand);style.textContent=".topLeft{display:flex;align-items:flex-start;gap:8px}";document.head.append(style)}
 const atlas=new Image();atlas.src="./assets/avatar-atlas.webp";atlas.onload=draw;
 function avatarStyle(i){return `--x:${i%4/3*100}%;--y:${Math.floor(i/4)*100}%`}
 function requestTheme(action,muted=false){if(embedded){parent.postMessage({type:"glitch-park:music",action,track:"theme",url:new URL(THEME,location.href).href,muted},"*");return}themeAudio||=Object.assign(new Audio(THEME),{loop:true,volume:.27});themeAudio.muted=muted;if(action==="play"&&!muted)themeAudio.play().catch(()=>{});if(action==="pause")themeAudio.pause()}
