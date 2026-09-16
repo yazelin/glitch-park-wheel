@@ -23,15 +23,15 @@ function draw(){
 
   // 深色遊樂園展廳：牆面有分區、霓虹拱門與真正向遠方收束的地板。
   const bg=ctx.createRadialGradient(w/2,h*.4,20,w/2,h*.45,Math.max(w,h)*.8);
-  bg.addColorStop(0,"#4a2771");bg.addColorStop(.44,"#211238");bg.addColorStop(1,"#07030e");
+  bg.addColorStop(0,"#76568c");bg.addColorStop(.44,"#49345e");bg.addColorStop(1,"#21152f");
   ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
-  ctx.fillStyle="rgba(8,4,16,.48)";
+  ctx.fillStyle="rgba(8,4,16,.18)";
   for(let i=0;i<9;i++){const px=i*w/8;ctx.fillRect(px-2,0,4,horizon)}
   ctx.strokeStyle="rgba(105,238,224,.24)";ctx.lineWidth=3;
   ctx.beginPath();ctx.ellipse(w/2,horizon+40,w*.46,h*.58,0,Math.PI,Math.PI*2);ctx.stroke();
   ctx.strokeStyle="rgba(255,114,197,.16)";ctx.lineWidth=1.5;
   for(let py=90;py<horizon;py+=72){ctx.beginPath();ctx.moveTo(0,py);ctx.lineTo(w,py);ctx.stroke()}
-  const floor=ctx.createLinearGradient(0,horizon,0,h);floor.addColorStop(0,"#24123b");floor.addColorStop(1,"#07040e");ctx.fillStyle=floor;ctx.fillRect(0,horizon,w,h-horizon);
+  const floor=ctx.createLinearGradient(0,horizon,0,h);floor.addColorStop(0,"#49335e");floor.addColorStop(1,"#181024");ctx.fillStyle=floor;ctx.fillRect(0,horizon,w,h-horizon);
   ctx.strokeStyle="rgba(105,238,224,.2)";ctx.lineWidth=1;
   for(let i=-10;i<=10;i++){ctx.beginPath();ctx.moveTo(w/2+i*24,horizon);ctx.lineTo(w/2+i*w*.14,h);ctx.stroke()}
   for(let q=0;q<8;q++){const p=q/8,py=horizon+(h-horizon)*p*p;ctx.beginPath();ctx.moveTo(0,py);ctx.lineTo(w,py);ctx.stroke()}
